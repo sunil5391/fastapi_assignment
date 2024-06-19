@@ -8,7 +8,7 @@ uvicorn main:app --host 0.0.0.0 --port 80
 http://127.0.0.1/
 
 # to test the list add functionality
-http://127.0.0.1/docs#/default/addIntegerlist_addlist_post
+http://127.0.0.1/add_list
 
 With the following parameters
 
