@@ -18,12 +18,8 @@ http://127.0.0.1/docs#/default/addIntegerlist_addlist_post
 With the following parameters
 
 {
-  "batchid": "id0101",
-  "payload": [
-    [
-      1,2
-    ],[3,4]
-  ]
+  "batchid": "101",
+  "payload": [[1,2],[3,4]]
 }
 
 # For unit test the functionality

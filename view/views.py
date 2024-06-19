@@ -1,19 +1,18 @@
 from fastapi import status,HTTPException,APIRouter,Request
-from utils import get_current_date,validate_output_list,setup_custom_logger
-from model.request import RequestModel
-from model.response import ResponseModel
+from utils import get_current_date,validate_output_list,setup_logger
+from model.api_request import ApiRequestModel
+from model.api_response import ApiResponseModel
 from controller.process_controller import execute_process
 
+logger = setup_logger()
 router = APIRouter()
 
-logger = setup_custom_logger()
 
-
-@router.post('/addlist',status_code=200,response_model=ResponseModel)
-def additionIntegerslist(model: RequestModel):
+@router.post('/add_list',status_code=200,response_model=ApiResponseModel)
+def additionIntegerslist(model: ApiRequestModel):
 	batchid=model.batchid
 	input_data=model.payload
-	logger.info(f'Rcvd parameters {batchid} and {input_data}')
+	logger.info('-----Batch id ------ {batchid} and {input_data}')
 	start_date=get_current_date()
 	output=execute_process(input_data)
 	if input_data is None:
@@ -24,11 +23,11 @@ def additionIntegerslist(model: RequestModel):
 		raise HTTPException(status_code=418,detail='Empty output')
 	else:
 		logger.info(f"Processing is complete with {output}")
-		ResponseModel.batchid=batchid
-		ResponseModel.response=output
-		ResponseModel.status="complete"
-		ResponseModel.started_at=start_date
-		ResponseModel.completed_at=get_current_date()
-		return ResponseModel
+		ApiResponseModel.batchid=batchid
+		ApiResponseModel.response=output
+		ApiResponseModel.status="complete"
+		ApiResponseModel.started_at=start_date
+		ApiResponseModel.completed_at=get_current_date()
+		return ApiResponseModel
             
             

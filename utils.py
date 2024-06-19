@@ -49,7 +49,7 @@ def create_directory(dir_name:str):
     else:
         os.mkdir(dir_name)
 
-def setup_custom_logger():
+def setup_logger():
     formatter = logging.Formatter(fmt='%(asctime)s %(levelname)-8s %(message)s',
                                   datefmt='%Y-%m-%d %H:%M:%S')
     create_directory(r'logs')

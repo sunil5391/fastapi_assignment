@@ -2,7 +2,7 @@ from pydantic import BaseModel,constr
 from typing import List, Optional
 from datetime import date, datetime
 
-class ResponseModel(BaseModel):
+class ApiResponseModel(BaseModel):
 	batchid: constr(max_length=6)
 	response:Optional[List[int]]
 	status: constr(max_length=8)
