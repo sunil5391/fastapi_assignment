@@ -1,7 +1,7 @@
 import datetime
 import logging
 import sys 
-from concurrent.futures import ProcessPoolExecutor
+import multiprocessing
 import os 
 
 def return_empty(ele_list:list):
@@ -38,8 +38,8 @@ def exec_process(input_list):
         workers_count=1
     else:
         workers_count=len(input_list)-1
-    with ProcessPoolExecutor(max_workers=workers_count) as pool:
-        output_list.extend(pool.map(get_sum_elements, input_list))
+    pool = multiprocessing.Pool(processes=workers_count)
+    output_list.extend(pool.map(get_sum_elements, input_list))
     if len(output_list)>0:
         return output_list
 
