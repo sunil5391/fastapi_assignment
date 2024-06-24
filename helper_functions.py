@@ -48,8 +48,7 @@ def create_directory(dir_name:str):
         os.mkdir(dir_name)
 
 def setup_logger():
-    formatter = logging.Formatter(fmt='%(asctime)s %(levelname)-8s %(message)s',
-                                  datefmt='%Y-%m-%d %H:%M:%S')
+    formatter = logging.Formatter(fmt='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     create_directory(r'logs')
     handler = logging.FileHandler(r'logs\logs.txt', mode='a')
     handler.setFormatter(formatter)
