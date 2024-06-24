@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from utils import setup_logger
-# import views
+from helper_functions import setup_logger
 from view import views
 
 app = FastAPI()
@@ -13,4 +12,4 @@ app.include_router(views.router)
 
 @app.get('/')
 def home():
-    return {'message': 'Api is running.....'}
+    return {'message': 'Api is executing.....'}
