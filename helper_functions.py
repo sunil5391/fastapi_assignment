@@ -1,8 +1,6 @@
-import datetime
-import logging
-import sys 
+import datetime, logging
+import sys, os 
 import multiprocessing
-import os 
 
 def return_empty(ele_list:list):
     try:
@@ -32,7 +30,7 @@ def validate_output_list(input_list):
     else:
         return False
     
-def exec_process(input_list):
+def addition_procedure(input_list):
     output_list = []
     if len(input_list)-1<1:
         workers_count=1
